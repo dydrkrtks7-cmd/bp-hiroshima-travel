@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dydrkrtks7-cmd.github.io/bp-hiroshima-travel/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://dydrkrtks7-cmd.github.io/bp-hiroshima-travel/posts/checklist-001-1hjz4p9.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dydrkrtks7-cmd.github.io/bp-hiroshima-travel/posts/interview-001-h0pdhv.html</loc>
@@ -13,8 +19,14 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://dydrkrtks7-cmd.github.io/bp-hiroshima-travel/posts/myth-002-1hjz4p9.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://dydrkrtks7-cmd.github.io/bp-hiroshima-travel/feed.xml</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
