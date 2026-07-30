@@ -1,10 +1,5 @@
 User-agent: *
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-Sitemap: https://hiroshima-travel-guide.pbn-builder.xyz/sitemap.xml
+Sitemap: https://yeonnam-massage-note.shirts-mapo-star.xyz/sitemap.xml
+Sitemap: https://yeonnam-massage-note.shirts-mapo-star.xyz/sitemap-pages.xml
