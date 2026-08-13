@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · hiroshima-travel</title>
+  <meta name="description" content="hiroshima-travel에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://yeonnam-massage-note.shirts-mapo-star.xyz/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* --- COLOR & FONT DEFINITIONS (Neon Void) --- */
+ :root {
+ --color-primary: #000000;
+ --color-secondary: #ffffff;
+ --color-accent: #ff3b00;
+ --font-raw: 'Impact', system-ui, sans-serif;
+ /* 3-4px solid border simulation */
+ }
+
+ /* --- BASE STYLES (Brutalist DNA) --- */
+ * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ }
+
+ body {
+ font-family: var(--font-raw);
+ background-color: #1a1a1a; /* 약간의 어둠 추가 */
+ color: var(--color-secondary);
+ line-height: 1.35;
+ /* 기본적으로 Full Bleed 유지 */
+ }
+
+ h1, h2, h3 {
+ font-weight: 900; /* Impact는 보통 bold하지만, 명시적으로 강하게 */
+ text-transform: uppercase;
+ }
+
+ a {
+ color: var(--color-accent);
+ text-decoration: none;
+ border-bottom: 2px solid var(--color-accent); /* 링크 자체에 경계선 부여 */
+ transition: color 0.1s, border-bottom 0.1s;
+ }
+
+ a:hover {
+ color: #ff8c42; /* 살짝 밝은 오렌지 계열로 변화 */
+ border-bottom-color: var(--color-accent);
+ }
+
+ /* --- LAYOUT & SPACING (Dense) --- */
+ .container {
+ max-width: none; /* Full Bleed 기본 */
+ padding: 0 24px; /* 좌우 패딩은 유지 */
+ gap: 16px; /* 전체 요소 간격 */
+ }
+
+ section {
+ padding: 40px 0; /* 섹션 내부 패딩 (상하) */
+ border-top: 3px solid var(--color-primary); /* 명확한 구분선 */
+ border-bottom: 3px solid var(--color-primary);
+ }
+
+ /* --- TYPOGRAPHY & PROVOCATIVE TONE --- */
+ h1 {
+ font-size: clamp(3rem, 8vw, 5.5rem); /* Oversized Typography (H1 > 3rem) */
+ line-height: 1.1;
+ margin-bottom: 24px;
+ text-shadow: 4px 4px 0 var(--color-accent); /* Raw texture/depth 느낌 */
+ }
+
+ h2 {
+ font-size: clamp(2rem, 5vw, 3.5rem);
+ margin-bottom: 16px;
+ padding-left: 8px; /* 약간의 들여쓰기 강조 */
+ border-left: 4px solid var(--color-accent); /* 강렬한 수직선 */
+ }
+
+ h3 {
+ font-size: clamp(1.3rem, 3vw, 2rem);
+ margin-top: 0;
+ margin-bottom: 8px;
+ }
+
+ p {
+ margin-bottom: 16px;
+ text-align: justify; /* 단락 내용 정당화 */
+ }
+
+ /* --- BLOCKS & OVERLAPPING (Asymmetric) --- */
+ .hero {
+ position: relative;
+ padding: 80px 0; /* 더 큰 패딩으로 압도감 부여 */
+ overflow: hidden;
+ text-align: center;
+ /* 배겨ᄝ 질감/색상 강조 */
+ background: linear-gradient(135deg, var(--color-primary) 0%, rgba(255, 59, 0, 0.2) 40%, #111111 100%);
+ }
+
+ /* 히어로 요소 비대칭 배치 예ᄉ시 */
+ .hero::before {
+ content: '';
+ position: absolute;
+ top: -50px; /* 위로 치우침 */
+ right: -40px; /* 오른쪽으로 벗어남 */
+ width: 150px;
+ height: 150px;
+ background-color: var(--color-accent);
+ border: 4px solid var(--color-primary);
+ transform: rotate(-20deg); /* 기울임 */
+ }
+
+ .hero h1 {
+ /* 중앙 정렬이지만, ::before가 비대칭으로 잡아줌 */
+ position: relative; 
+ z-index: 10;
+ }
+
+
+ /* --- UGC CARD STYLES (Overlapping/Raw) --- */
+ .review-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 32px; /* 카드 간격은 더 크게 */
+ padding-top: 16px;
+ }
+
+ .review-card {
+ background-color: #111111; /* 메인 배경보다 살짝 밝게 */
+ border: 4px solid var(--color-accent); /* 강렬한 테두리 */
+ padding: 24px;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ /* 약간의 비틀림 (Skew) 적용 */
+ transform: skewX(-3deg); 
+ box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5); /* 그림자 강조 */
+ }
+
+ .review-card:hover {
+ transform: skewX(-1deg) translateY(-6px); /* 호버 시 기울어짐 감소 및 상승 */
+ box-shadow: 12px 12px 0px rgba(255, 59, 0, 0.7);
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 16px;
+ }
+
+ .nickname {
+ font-size: 1.3rem;
+ color: var(--color-accent);
+ /* 이름 강조용 박스 */
+ padding: 2px 5px;
+ border: 2px dashed var(--color-secondary);
+ }
+
+ .date {
+ font-size: 0.9rem;
+ opacity: 0.7;
+ }
+
+ .stars {
+ /* 별점 구현 (SVG 사용) */
+ font-size: 1.5rem;
+ color: gold; /* 황금색을 사용하여 대비 강조 */
+ }
+
+ .card-body p {
+ margin-bottom: 0;
+ font-size: 1.1rem;
+ }
+
+
+ /* --- NAVIGATION & HEADER STYLES --- */
+ header {
+ background-color: var(--color-primary);
+ border-bottom: 5px solid var(--color-accent); /* 헤더 하단 라인을 더 두껍게! */
+ padding: 24px;
+ text-align: center;
+ }
+
+ .nav-main {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ max-width: 1300px; /* 가상의 최대 너비 */
+ margin: 0 auto;
+ }
+
+ .logo h2 {
+ border-left: none; /* 로고 자체는 왼쪽 경계선 제거 */
+ font-size: 2rem;
+ margin-bottom: 0;
+ }
+ 
+ nav ul {
+ list-style: none;
+ display: flex;
+ gap: 30px;
+ }
+
+ nav a {
+ font-size: 1.1rem;
+ text-decoration: none;
+ padding: 5px 0;
+ border-bottom: 2px solid var(--color-secondary); /* 기본 상태는 흰색 밑줄 */
+ transition: border-bottom 0.2s ease;
+ }
+
+ nav a:hover {
+ border-bottom-color: var(--color-accent); /* 호버 시 강조색 */
+ }
+
+ /* --- FOOTER STYLES --- */
+ footer {
+ background-color: #111111;
+ padding: 20px;
+ text-align: center;
+ border-top: 4px solid var(--color-accent);
+ font-size: 0.85rem;
+ color: rgba(255, 255, 255, 0.7);
+ }
+
+ /* ==================================== */
+ /* --- RESPONSIVE DESIGN (Mobile) --- */
+ /* ==================================== */
+ @media (max-width: 992px) {
+ /* 큰 태블릿/소형 노트북 대응 */
+ section {
+ padding: 30px 0;
+ }
+ .review-grid {
+ gap: 24px; /* 카드 간격 약간 줄이기 */
+ }
+ }
+
+ @media (max-width: 768px) {
+ /* 모바일 환경 대응 - 메뉴 변환 및 레이아웃 조정 */
+ 
+ /* Nav Main 중앙 정렬 느낌 강화 */
+ .nav-main {
+ flex-direction: row; /* 기본은 가로 유지, 하지만 flex가 담당 */
+ justify-content: space-between;
+ }
+
+ /* 햄버거 버튼 생성 및 스타일링 */
+ .menu-toggle {
+ display: block; /* 모바일에서만 보이게 함 (기본 숨김 대비) */
+ cursor: pointer;
+ font-size: 3rem;
+ color: var(--color-accent);
+ border: 4px solid var(--color-secondary);
+ padding: 5px 10px;
+ transform: skewY(5deg); /* 수직 방향으로 비틀기 */
+ }
+
+ /* 네비게이션 리스트를 세로로 쌓음 */
+ nav ul {
+ flex-direction: column;
+ gap: 20px; /* 메뉴 항목 간격 줄이기 */
+ text-align: center;
+ }
+ 
+ /* 헤더의 로고와 네비게이션이 너무 넓으면 세로 정렬 유도 */
+ .nav-main {
+ flex-direction: column;
+ gap: 20px; /* 요소 간격 추가 */
+ }
+
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · hiroshima-travel">
+  <meta property="og:description" content="hiroshima-travel에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://yeonnam-massage-note.shirts-mapo-star.xyz/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 34개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/checklist-001-1hjz4p9.html">Hiroshima travel 안내</a>
+        <p class="post-item__summary">히로시마는 풍부한 역사와 아름다운 자연경관이 어우러진 매력적인 여행지입니다. 평화 기념 공원은 이 도시를 방문하는 여행객들이 가장 먼저 찾는 곳으로, 세계 평화의 소중함을 되새기며 차분한 시간을 보</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0001.html">Hiroshima travel 안내 관련 동대문 마사지 풋쌤 이용 시 주의사항</a>
+        <p class="post-item__summary">오랜 비행과 낯선 지형을 걷는 Hiroshima travel 안내 정보를 찾다 보면 의외로 자신의 피로를 간과하는 경우가 많습니다. 특히 낯선 여행지에 도착했을 때의 설렘은 체력 소모를 실감하지 못</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0002.html">Hiroshima travel 안내 및 마포 합정 인디 소셜 라운지 가이드 활용법</a>
+        <p class="post-item__summary">많은 이들이 소셜 라운지는 시끄럽고 복잡한 인파가 가득할 것이라는 오해를 가지고 있습니다. 하지만 도심 속 숨겨진 공간들은 의외로 사적인 대화와 소규모 모임에 최적화된 설계를 갖추고 있습니다. 무분</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0003.html">Hiroshima travel 안내 정보 확인 시 구글 알고리즘 감점 치료 및 백링크 수술실 조언</a>
+        <p class="post-item__summary">웹사이트의 노출 순위가 하락하면 명확한 원인 진단과 체계적인 처방이 즉각적으로 뒤따라야 합니다. 검색 엔진의 평가 기준은 시시각각 변화하며, 이에 발맞추지 못한 사이트는 알고리즘의 감점 대상이 되기</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0004.html">Hiroshima travel 안내 관련 마포 홍대 로컬 럭셔리 밤문화 가이드 비교 기준</a>
+        <p class="post-item__summary">여러분은 밤의 도시를 경험할 때 가장 중요하게 생각하는 기준이 무엇인가요? 화려한 조명인지, 아니면 차별화된 서비스의 질인지 고민해 본 적이 있을 것입니다. 단순히 유행을 좇는 곳보다는 자신의 취향</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0005.html">Hiroshima travel 안내 마포 럭셔리 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">해외 정보를 찾는 분들이 Hiroshima travel 안내 내용을 숙지하는 것만큼이나 마포 지역의 비즈니스 모임 장소를 찾는 과정은 신중해야 합니다. 대규모 인원이 모이는 VIP 단체 모임은 장소</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0006.html">Hiroshima travel 안내 자세히 보기</a>
+        <p class="post-item__summary">최근 Hiroshima travel 안내 문서를 작성하며 검색 최적화의 중요성을 체감하는 분들이 많습니다. 양질의 콘텐츠를 안정적으로 확보하기 위해서는 콘텐츠 급수 정화 과정이 반드시 동반되어야 합</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0007.html">Hiroshima travel 안내 마포 유흥 투명 정찰제 가격 정보 디렉토리</a>
+        <p class="post-item__summary">낯선 지역에서 Hiroshima travel 안내 정보를 찾는 것처럼, 유흥 업소를 선택할 때도 명확한 정보가 없으면 큰 어려움을 겪습니다. 많은 이들이 실패하는 지점은 사전에 가격 정보를 확인하지</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0008.html">Hiroshima travel 안내 마포 코인노래방 방음 시설 비교 가이드</a>
+        <p class="post-item__summary">해외를 여행하며 Hiroshima travel 안내 자료를 꼼꼼히 살피는 습관은 국내에서 일상을 보낼 때도 유효합니다. 특히 마포 지역의 코인노래방을 이용할 때 방음 시설이 제대로 갖춰졌는지 확인하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0009.html">Hiroshima travel 안내를 참고한 마포 셔츠룸 리얼 후기 소셜 마케팅 가이드 전략</a>
+        <p class="post-item__summary">해외를 방문할 때 현지 정보를 미리 파악하는 것이 중요한 것처럼, 유흥 문화 역시 사전 조사가 필수적입니다. Hiroshima travel 안내 정보를 습득하는 과정과 마포 지역의 특정 업소를 탐색</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0010.html">Hiroshima travel 안내가 알려주는 마포 셔츠룸 예약 시 눈탱이 피하는 법의 실체</a>
+        <p class="post-item__summary">많은 이들이 흔히 하는 오해 중 하나는 유명한 곳이라면 어디든 가격이 정찰제일 것이라는 믿음입니다. Hiroshima travel 안내 문서를 보며 여행 경로를 짜듯, 유흥 업소를 이용할 때도 철저</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0011.html">Hiroshima travel 안내로 확인하는 4</a>
+        <p class="post-item__summary">최신 기술 트렌드를 학습하기 위해서는 명확한 충족 조건과 체계적인 커리큘럼이 필수적입니다. 마치 Hiroshima travel 안내 문서를 통해 복잡한 여행 일정을 조율하듯이, IT 기술을 습득하는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0012.html">Hiroshima travel 안내 활용 및 구글 틈새 키워드 트래픽 외환 거래 전략의 핵심</a>
+        <p class="post-item__summary">데이터가 넘쳐나는 시대에 정확한 정보를 찾아내는 것이 투자 수익을 결정한다는 사실을 알고 계십니까? Hiroshima travel 안내를 통해 최적의 동선을 찾는 여행객처럼, 투자자 역시 검색 엔진</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0013.html">Hiroshima travel 안내를 통한 체계적인 셔츠룸 예약 시스템 활용법</a>
+        <p class="post-item__summary">낯선 도시로 떠날 때 필요한 Hiroshima travel 안내 정보는 현지의 문화를 이해하고 안전하게 즐기는 데 중요한 기초가 됩니다. 특히 유흥 문화가 발달한 지역에서는 정식 등록된 업체를 통해</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0014.html">Hiroshima travel 안내로 알아보는 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호의 중요성</a>
+        <p class="post-item__summary">여행을 준비할 때 Hiroshima travel 안내가 세밀한 지침서 역할을 하듯, 웹사이트 운영에 있어서도 정교한 관리 전략이 필요합니다. 검색 엔진의 효율적인 접근을 돕기 위해 관리자는 기술적인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0015.html">Hiroshima travel 안내에서 배우는 실패 없는 마포 단체 회식용 대형 룸 노래방 가격 정보 예약법</a>
+        <p class="post-item__summary">여행을 떠나기 전 Hiroshima travel 안내를 꼼꼼히 살피는 것과 마찬가지로, 모임 장소를 정할 때도 사전 정보 파악은 필수적입니다. 많은 이들이 회식 장소를 예약할 때 실패하는 이유는 당</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0016.html">Hiroshima travel 안내로 확인하는 마포 홍대 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">낯선 지역으로 떠나는 Hiroshima travel 안내가 여행의 질을 높여주듯, 마포와 홍대 일대에서 단체 모임을 계획할 때도 정확한 정보 수집이 무엇보다 중요합니다. 효율적인 시간을 보내기 위해</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0017.html">Hiroshima travel 안내를 통해 알아보는 구글 알고리즘 고신용 도메인 보증 카드 발급 전략</a>
+        <p class="post-item__summary">낯선 도시를 여행할 때 체계적인 계획이 필수적이듯, 웹사이트 운영 또한 철저한 사전 준비가 필요합니다. 특히 히로시마를 방문하는 초행자들이 정보 부족으로 곤란을 겪는 것처럼, 많은 웹마스터가 도메인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0018.html">Hiroshima travel 안내와 연계한 구글 인덱싱 속도 초고속 광회선 대역폭 최적화 실무</a>
+        <p class="post-item__summary">많은 관리자가 웹사이트의 콘텐츠만 풍부하게 구성하면 인덱싱 속도가 자동으로 빨라질 것이라 오해하곤 합니다. 하지만 네트워크 대역폭과 서버의 반응 속도는 인덱싱의 효율성을 결정짓는 가장 중요한 물리적</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0075.html">Hiroshima travel 안내 확인 시 합정 셔츠룸 단골들이 뽑은 핫플 매거진 활용</a>
+        <p class="post-item__summary">성공적인 모임은 적절한 장소 선정과 구성원 간의 합에서 시작됩니다. 특히 인원 구성에 따른 매장 선택은 당일 행사의 성패를 가르는 가장 중요한 요소입니다. 이러한 고민을 해결하기 위해 많은 이들이 </p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
